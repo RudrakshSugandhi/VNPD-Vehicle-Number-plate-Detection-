@@ -1,0 +1,10 @@
+Paper read: https://ieeexplore.ieee.org/document/9068049
+
+Articles and notebooks:
+Car License Plate Detection	   https://www.kaggle.com/datasets/andrewmvd/car-plate-detection	
+License Plates Dataset	       https://public.roboflow.com/object-detection/license-plates-us-eu	
+
+Dataset Link:
+1. https://web.inf.ufpr.br/vri/databases/ufpr-alpr/
+2. https://www.v7labs.com/open-datasets/ufpr-alpr
+3. https://web.inf.ufpr.br/vri/databases/ufpr-alpr/license-agreement/

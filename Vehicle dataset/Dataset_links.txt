@@ -1,0 +1,4 @@
+United state License Plate dataset: 
+Kaggle dataset links: 
+    1. https://www.kaggle.com/datasets/tolgadincer/us-license-plates
+    2. UFPR-ALPR license dataset - request mail sent to the UFPR email address

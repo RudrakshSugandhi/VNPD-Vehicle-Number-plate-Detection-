@@ -1,10 +1,10 @@
 Paper read: https://ieeexplore.ieee.org/document/9068049
 
 Articles and notebooks:
+Car License Plate Detection	   https://www.kaggle.com/datasets/andrewmvd/car-plate-detection	
+License Plates Dataset	       https://public.roboflow.com/object-detection/license-plates-us-eu	
 
-1. Car License Plate Detection	   https://www.kaggle.com/datasets/andrewmvd/car-plate-detection	
-2. License Plates Dataset	       https://public.roboflow.com/object-detection/license-plates-us-eu
-3. https://medium.com/geekculture/real-time-automated-number-plate-recognition-system-1820b5e42bae	
-
-Videos Referred: 
-1. https://www.youtube.com/watch?v=6xklN4iiA0Q
+Dataset Link:
+1. https://web.inf.ufpr.br/vri/databases/ufpr-alpr/
+2. https://www.v7labs.com/open-datasets/ufpr-alpr
+3. https://web.inf.ufpr.br/vri/databases/ufpr-alpr/license-agreement/

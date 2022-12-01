@@ -169,6 +169,7 @@ def main(img_path=None, vid_path=None,vid_out = None):
         if vid_out: ### creating the video writer if video output path is given
 
             # by default VideoCapture returns float instead of int
+            #cap = cap.set(cv2.CAP_PROP_FPS, 30) ## Changed by RS
             width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
             fps = int(cap.get(cv2.CAP_PROP_FPS))
@@ -213,6 +214,6 @@ def main(img_path=None, vid_path=None,vid_out = None):
 ### -------------------  calling the main function-------------------------------
 
 
-#main(vid_path="test_v.mp4",vid_out="vid_1.mp4") ### for custom vide
+main(vid_path="test_v.mp4",vid_out="vid_1.mp4") ### for custom vide
 
-main(img_path="car1.png") ## for image
+#main(img_path="car1.png") ## for image

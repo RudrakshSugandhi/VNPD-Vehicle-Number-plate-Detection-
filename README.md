@@ -9,4 +9,4 @@ https://www.kaggle.com/datasets/andrewmvd/car-plate-detection	\
 https://public.roboflow.com/object-detection/license-plates-us-eu \
 https://github.com/deepakat002/numberplaterecognition \
 https://medium.com/geekculture/real-time-automated-number-plate-recognition-system-1820b5e42bae	 \
-https://www.youtube.com/watch?v=6xklN4iiA0Q \
+https://www.youtube.com/watch?v=6xklN4iiA0Q

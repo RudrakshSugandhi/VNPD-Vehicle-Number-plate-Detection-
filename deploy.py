@@ -6,6 +6,7 @@ import time
 import re
 import numpy as np
 import easyocr
+#from skvideo.io import VideoWriter
 
 
 ##### DEFINING GLOBAL VARIABLE
@@ -117,49 +118,19 @@ def filter_text(region, ocr_result, region_threshold):
 
 ### ---------------------------------------------- Main function -----------------------------------------------------
 
-def main(img_path=None, vid_path=None,vid_out = None):
+def main(vid_path=None,vid_out = None):
 
     print(f"[INFO] Loading model... ")
     ## loading the custom trained model
-    # model =  torch.hub.load('ultralytics/yolov5', 'custom', path='last.pt',force_reload=True) ## if you want to download the git repo and then run the detection
+
     model =  torch.hub.load('yolov5', 'custom', source ='local', path='best_model_weights.pt',force_reload=True) ### The repo is stored locally
 
     classes = model.names ### class names in string format
 
 
 
-
-    ### --------------- for detection on image --------------------
-    if img_path != None:
-        print(f"[INFO] Working with image: {img_path}")
-        img_out_name = f"./output/result_{img_path.split('/')[-1]}"
-
-        frame = cv2.imread(img_path) ### reading the image
-        frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-        
-        results = detectx(frame, model = model) ### DETECTION HAPPENING HERE    
-
-        frame = cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
-
-        frame = plot_boxes(results, frame,classes = classes)
-        
-
-        cv2.namedWindow("img_only", cv2.WINDOW_NORMAL) ## creating a free windown to show the result
-
-        while True:
-            # frame = cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
-
-            cv2.imshow("img_only", frame)
-
-            if cv2.waitKey(5) & 0xFF == ord('q'):
-                print(f"[INFO] Exiting. . . ")
-
-                cv2.imwrite(f"{img_out_name}",frame) ## if you want to save he output result.
-
-                break
-
     ### --------------- for detection on video --------------------
-    elif vid_path !=None:
+    if vid_path !=None:
         print(f"[INFO] Working with video: {vid_path}")
 
         ## reading the video
@@ -169,14 +140,15 @@ def main(img_path=None, vid_path=None,vid_out = None):
         if vid_out: ### creating the video writer if video output path is given
 
             # by default VideoCapture returns float instead of int
-            #cap = cap.set(cv2.CAP_PROP_FPS, 30) ## Changed by RS
+            
             width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
             fps = int(cap.get(cv2.CAP_PROP_FPS))
-            codec = cv2.VideoWriter_fourcc(*'mp4v') ##(*'XVID')
-            out = cv2.VideoWriter(vid_out, codec, fps, (width, height))
 
-        # assert cap.isOpened()
+            codec = cv2.VideoWriter_fourcc(*'XVID') ##(*'XVID')
+            out = cv2.VideoWriter(vid_out, codec, fps, (width, height),True)
+
+        print(out.isOpened()) #Code Check changed by RS
         frame_no = 1
 
         cv2.namedWindow("vid_out", cv2.WINDOW_NORMAL)
@@ -190,7 +162,6 @@ def main(img_path=None, vid_path=None,vid_out = None):
                 results = detectx(frame, model = model)
                 frame = cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
 
-
                 frame = plot_boxes(results, frame,classes = classes)
                 
                 cv2.imshow("vid_out", frame)
@@ -202,9 +173,11 @@ def main(img_path=None, vid_path=None,vid_out = None):
                     break
                 frame_no += 1
         
+       
         print(f"[INFO] Clening up. . . ")
         ### releaseing the writer
         out.release()
+        cap.release()
         
         ## closing all windows
         cv2.destroyAllWindows()
@@ -214,6 +187,5 @@ def main(img_path=None, vid_path=None,vid_out = None):
 ### -------------------  calling the main function-------------------------------
 
 
-main(vid_path="test_v.mp4",vid_out="vid_1.mp4") ### for custom vide
+main(vid_path="test_vid.mp4",vid_out="output.avi") ### for custom vide
 
-#main(img_path="car1.png") ## for image

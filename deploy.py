@@ -188,4 +188,4 @@ def main(vid_path=None,vid_out = None):
 
 
 main(vid_path="test_vid.mp4",vid_out="output.avi") ### for custom vide
-
+#changes made to output file as the mp4 is giving the error.
